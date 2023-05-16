@@ -172,9 +172,9 @@ if [ "$init" != "skip" ]; then
     ln -s /content/drive/MyDrive/KoboldAI/themes/ themes
 
     if [ -n "${COLAB_TPU_ADDR+set}" ]; then
-        pip install -r requirements_mtj.txt
+        pip install -r requirements_mtj.txt | grep -v 'already satisfied'
     else
-        pip install -r requirements.txt
+        pip install -r requirements.txt | grep -v 'already satisfied'
     fi
     
     # Make sure Colab has the system dependencies
