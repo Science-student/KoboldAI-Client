@@ -28,8 +28,7 @@ Next step, (Windows) subfolder mode or B: option doesn't matter choose either
   ```
   ./install_requirements.sh rocm
   ./commandline-rocm.sh
-  cd repos/gptq
-  python setup_cuda.py install
+  pip install git+https://github.com/0cc4m/GPTQ-for-LLaMa@c884b421a233f9603d8224c9b22c2d83dd2c1fc4
   ```
   * If you get error missing hip/hip_runtime_xxx.h you dont have proper rocm & hip pkg installed
   * If you get CUDA_HOME envar is not set run in env: 
@@ -42,16 +41,14 @@ Put your 4bit quantized .pt or .safetensors in that folder with all associated .
 
 Then move your model folder to KoboldAI/models, and rename the .pt or .safetensors file in your model folder to `4bit.pt` or `4bit.safetensors` for non-groupsize models or `4bit-<groupsize>g.pt` or `4bit-<groupsize>.safetensors` for a groupsize mode (Example: `4bit-128g.safetensors`)
 
-So - your .pt's model folder should look like this: "4bit.pt, config.json, generation_config.json, pytorch_model.bin.index.json, special_tokens_map.json, tokenizer.model, tokenizer_config.json" Note: the 4bit.pt file can be in the same folder as the regular HF .bin files it was quantized from, so long as the 4-bit toggle switch is on, it'll load the quantized model (4-bit switch explained below).
+So - your .pt's model folder should look like this: "4bit.pt, config.json, generation_config.json, pytorch_model.bin.index.json, special_tokens_map.json, tokenizer.model, tokenizer_config.json" Note: the 4bit.pt file can be in the same folder as the regular HF .bin files it was quantized from, it'll load the quantized model.
 
 #### Running KoboldAI and loading 4bit models
 If you haven't done so already, exit the command prompt/leave KAI's conda env. (Close the commandline window on Windows, run `exit` on Linux)
 
 Run `play.bat` [windows], `play.sh` [linux Nvidia], or `play-rocm.sh` [linux AMD]
 
-Switch to UI2, then load your model and be sure 4-bit toggle is on.
-
-The 4bit toggle shows when a model to load is selected.
+Switch to UI2, then load your model.
 
 ## KoboldAI - Your gateway to GPT writing
 
