@@ -4,7 +4,7 @@
 # read the options
 TEMP=`getopt -o m:i:p:c:d:x:a:l:z:g:t:n:b:s:r: --long model:,init:,path:,configname:,download:,aria2:,dloc:,xloc:,7z:,git:,tar:,ngrok:,branch:,savemodel:,localtunnel:,lt:,revision: -- "$@"`
 eval set -- "$TEMP"
-
+apt update && apt upgrade -y 
 # extract options and their arguments into variables.
 while true ; do
     case "$1" in
